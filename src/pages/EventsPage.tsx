@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
 import { useAppContext } from "provider/AppProvider";
-import { useFetchLazy } from "hooks";
+import { useHistory, useLocation, Link } from "react-router-dom";
+import { useFetchLazy, useDebounce } from "hooks";
+
 import { SEARCH_EVENTS_URL } from "api/end-points";
 import { GetEventsWithSearchQuery } from "global.d";
-import { useHistory, useLocation } from "react-router-dom";
 
 const EventsPage = () => {
   const history = useHistory();
   const location = useLocation();
-
+  const { data, fetchData } = useFetchLazy<GetEventsWithSearchQuery>();
   const { handleFavoriteEvent, favoritesEvents } = useAppContext();
   const [search, setSearch] = useState<string>("");
+  const debouncedSearch = useDebounce(search, 500);
 
   useEffect(() => {
     const searchParams = location.search.split("=")?.[1];
@@ -29,23 +31,23 @@ const EventsPage = () => {
     fetchData(`${SEARCH_EVENTS_URL}&search=${search}`);
   };
 
-  const { data, fetchData } = useFetchLazy<GetEventsWithSearchQuery>();
+  useEffect(() => {
+    if ((debouncedSearch as string).length) {
+      fetchData(`${SEARCH_EVENTS_URL}&search=${debouncedSearch}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearch]);
 
   return (
     <div>
-      <button onClick={() => handleFavoriteEvent("121")}>
-        Add to favorite
-      </button>
-
       <form onSubmit={handleSubmit}>
         <input value={search} onChange={handleChange} type="text" />
-        <button type="submit">Search</button>
       </form>
 
       <ol>
         {data?.records.map(({ record: event }, index) => {
           const eventId = event.fields.id;
-          const isFavorite = favoritesEvents.includes(event.fields.id);
+          const isFavorite = favoritesEvents.includes(eventId);
           return (
             <li
               style={{
@@ -56,7 +58,9 @@ const EventsPage = () => {
               <button onClick={() => handleFavoriteEvent(eventId)}>
                 Add to favorite
               </button>
-              {event.fields.title}
+              <Link to={{ pathname: `/event/${event.id}` }}>
+                {event.fields.title}
+              </Link>
             </li>
           );
         })}

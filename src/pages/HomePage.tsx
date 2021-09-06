@@ -1,6 +1,6 @@
 import { useFetch } from "hooks";
-import { RETREIVE_LAST_EVENT } from "api/end-points";
 import { GetEventsWithSearchQuery } from "global.d";
+import { RETREIVE_LAST_EVENT } from "api/end-points";
 
 const HomePage = () => {
   const { data, loading } =
@@ -10,6 +10,7 @@ const HomePage = () => {
   if (!data) return <p>No data</p>;
 
   const event = data?.records[0].record.fields;
+  console.log(data?.records[0].record);
   return <div>{event.title}</div>;
 };
 
