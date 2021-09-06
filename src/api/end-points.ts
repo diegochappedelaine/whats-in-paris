@@ -5,3 +5,7 @@ export const SEARCH_EVENTS_URL =
 
 export const GET_EVENT_BY_ID =
   API_URL + "catalog/datasets/que-faire-a-paris-/records";
+
+export const RETREIVE_LAST_EVENT =
+  API_URL +
+  "catalog/datasets/que-faire-a-paris-/records/?&rows=1&sort=updated_at";

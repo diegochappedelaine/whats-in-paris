@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 
 function useFetch<T>(url: string) {
   const [error, setError] = useState<unknown>();
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<T>();
 
   useEffect(() => {
     const fetchDatas = async () => {
-      setLoading(true);
       try {
         const data = await fetch(url);
         const result = await data.json();
