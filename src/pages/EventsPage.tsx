@@ -58,6 +58,7 @@ const EventsPage = () => {
               <button onClick={() => handleFavoriteEvent(eventId)}>
                 Add to favorite
               </button>
+              <img src={event.fields.cover.url} alt={event.fields.title} />
               <Link to={{ pathname: `/event/${event.id}` }}>
                 {event.fields.title}
               </Link>

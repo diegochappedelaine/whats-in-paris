@@ -20,9 +20,7 @@ function useFetchFavoritesEvents() {
         });
         // an async/await iteration of dataFetch wont return an array of data, but an array of promise
         // I solve this using Promise.all
-        const payload = (await Promise.all(detailsData)).map(
-          (event: GetEventByIdQuery) => event
-        );
+        const payload = await Promise.all(detailsData);
         setData(payload);
       } catch (error) {
         setError(error);
