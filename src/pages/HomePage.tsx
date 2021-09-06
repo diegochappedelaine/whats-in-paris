@@ -11,7 +11,6 @@ const HomePage = () => {
   if (!data) return <p>No data</p>;
 
   const event = data?.records[0].record;
-  console.log(event);
   return (
     <div>
       <Link to={{ pathname: `/event/${event.id}` }}>{event.fields.title}</Link>

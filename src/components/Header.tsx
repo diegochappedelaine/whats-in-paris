@@ -5,9 +5,9 @@ import { Link, NavLink } from "react-router-dom";
 import { theme } from "core/Theme";
 
 const NavigationElements = [
-  { url: "/", label: "Home" },
-  { url: "/events", label: "Events" },
-  { url: "/favorites", label: "Favorites" },
+  { url: "/", label: "Actus" },
+  { url: "/events", label: "Sorties" },
+  { url: "/favorites", label: "Favoris" },
 ];
 
 const HeaderContainer = styled.header`
@@ -52,7 +52,7 @@ const Header = () => {
   return (
     <Container>
       <HeaderContainer>
-        <Title to="/">What's In Paris</Title>
+        <Title to="/">QuoiDeNeuf</Title>
         <nav>
           <UnorderedList>
             {NavigationElements.map(({ url, label }, index) => (

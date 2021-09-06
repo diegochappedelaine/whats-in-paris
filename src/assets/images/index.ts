@@ -1,5 +1,5 @@
-import FestivitesImg from "./festivities.png";
-import MuseumImg from "./museum.png";
-import Party from "./party.png";
+import FestivitesImg from "./festivities.svg";
+import MuseumImg from "./museum.svg";
+import Party from "./party.svg";
 
 export { FestivitesImg, MuseumImg, Party };
