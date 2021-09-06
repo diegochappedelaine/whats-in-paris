@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-function useFetchLazy<T = unknown>(url: string) {
+function useFetchLazy<T = unknown>() {
   const [error, setError] = useState<unknown>();
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<T>();
 
-  const fetchData = async () => {
+  const fetchData = async (url: string) => {
     setLoading(true);
     try {
       const data = await fetch(url);
