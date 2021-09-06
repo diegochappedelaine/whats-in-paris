@@ -46,7 +46,7 @@ const EventsPage = () => {
 
       <ol>
         {data?.records.map(({ record: event }, index) => {
-          const eventId = event.fields.id;
+          const eventId = event.id;
           const isFavorite = favoritesEvents.includes(eventId);
           return (
             <li
