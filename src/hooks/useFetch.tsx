@@ -14,7 +14,11 @@ function useFetch<T>(url: string) {
       } catch (error) {
         return setError(error);
       }
-      setLoading(false);
+      const timeout = setTimeout(() => setLoading(false), 200);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     };
     fetchDatas();
     // eslint-disable-next-line react-hooks/exhaustive-deps

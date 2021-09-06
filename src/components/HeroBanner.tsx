@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Container } from "components/layouts";
 
-import { FestivitesImg, MuseumImg, Party } from "assets/images";
+import { FestivitesImg, MuseumImg, PartyImg } from "assets/images";
 
 import { retreiveRandomElementFromArray } from "utils";
 
@@ -53,7 +53,7 @@ const TextSection = styled.div`
   `}
 `;
 
-const Images = [FestivitesImg, MuseumImg, Party];
+const Images = [FestivitesImg, MuseumImg, PartyImg];
 
 const Image = retreiveRandomElementFromArray(Images);
 

@@ -14,7 +14,7 @@ type Cover = {
   url: string;
   color_summary: string[];
   filename: string;
-  last_synchronized: Date;
+  last_synchronized: string;
   width: number;
   etag: string;
   id: string;
@@ -37,9 +37,9 @@ type EventRecord = {
 export type EventFields = {
   blind: number;
   pmr: number;
-  date_end: Date;
+  date_end: string;
   deaf: number;
-  updated_at: Date;
+  updated_at: string;
   access_type: string;
   occurrences: string;
   contact_name: string;
@@ -49,7 +49,7 @@ export type EventFields = {
   category: string;
   title: string;
   cover_alt: string;
-  date_start: Date;
+  date_start: string;
   price_detail: string;
   access_link: string;
   lat_lon: LatLon;
