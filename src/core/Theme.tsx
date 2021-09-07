@@ -5,6 +5,7 @@ export type ThemeType = typeof theme;
 const black100 = "#000000";
 
 const grey100 = "#F7FAFC";
+const grey200 = "#E8E7E7";
 const grey600 = "#718096";
 const grey700 = "#4A5568";
 const grey800 = "#2D3748";
@@ -16,11 +17,13 @@ export const theme = {
     heading1: "60px",
     heading2: "40px",
     heading3: "20px",
+    articleHeading: "45px",
     subtitle: "30px",
     textSmall: "14px",
     textMedium: "16px",
+    textBig: "18px",
   },
-  colors: { black100, grey100, grey600, grey700, grey800, primary },
+  colors: { black100, grey100, grey200, grey600, grey700, grey800, primary },
   boxShadow: { regular: "0px 5px 4px rgba(221, 221, 221, 0.25)" },
 };
 
