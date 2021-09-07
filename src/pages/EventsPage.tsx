@@ -47,7 +47,6 @@ const EventsPage = () => {
   return (
     <>
       <HeroBanner />
-
       <Container>
         <form onSubmit={handleSubmit}>
           <Input value={search} handleChange={handleChange} />

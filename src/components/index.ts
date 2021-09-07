@@ -5,6 +5,7 @@ import Loading from "./Loading";
 import Input from "./Input";
 import HandleFavorite from "./HandleFavorite";
 import ImageModal from "./ImageModal";
+import EventInfobox from "./EventInfobox";
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   Input,
   HandleFavorite,
   ImageModal,
+  EventInfobox,
 };

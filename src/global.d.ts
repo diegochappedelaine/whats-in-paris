@@ -50,7 +50,7 @@ export type EventFields = {
   title: string;
   cover_alt: string;
   date_start: string;
-  price_detail: string;
+  price_detail: string | null;
   access_link: string;
   lat_lon: LatLon;
   address_name: string;
