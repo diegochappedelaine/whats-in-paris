@@ -64,7 +64,8 @@ const HeroBanner = () => {
         <Section>
           <TextSection>
             <h1>
-              Paris <br />
+              Paris,
+              <br />
               différement
             </h1>
             <p>Sorties, expo, concerts</p>

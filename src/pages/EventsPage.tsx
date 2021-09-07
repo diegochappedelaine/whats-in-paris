@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { useAppContext } from "provider/AppProvider";
-import { useHistory, useLocation, Link } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useFetchLazy, useDebounce } from "hooks";
+import { EventCard, Input } from "components";
 
 import { SEARCH_EVENTS_URL } from "api/end-points";
 import { GetEventsWithSearchQuery } from "global.d";
+import { Container } from "components/layouts";
 
 const EventsPage = () => {
   const history = useHistory();
   const location = useLocation();
   const { data, fetchData } = useFetchLazy<GetEventsWithSearchQuery>();
-  const { handleFavoriteEvent, favoritesEvents } = useAppContext();
   const [search, setSearch] = useState<string>("");
   const debouncedSearch = useDebounce(search, 500);
 
@@ -39,34 +39,29 @@ const EventsPage = () => {
   }, [debouncedSearch]);
 
   return (
-    <div>
+    <Container>
       <form onSubmit={handleSubmit}>
-        <input value={search} onChange={handleChange} type="text" />
+        <Input value={search} handleChange={handleChange} />
       </form>
 
       <ol>
         {data?.records.map(({ record: event }, index) => {
-          const eventId = event.id;
-          const isFavorite = favoritesEvents.includes(eventId);
           return (
-            <li
-              style={{
-                background: isFavorite ? "red" : "white",
-              }}
+            <EventCard
               key={index}
-            >
-              <button onClick={() => handleFavoriteEvent(eventId)}>
-                Add to favorite
-              </button>
-              <img src={event.fields.cover.url} alt={event.fields.title} />
-              <Link to={{ pathname: `/event/${event.id}` }}>
-                {event.fields.title}
-              </Link>
-            </li>
+              event={{
+                title: event.fields.title,
+                description: event.fields.lead_text,
+                date_start: event.fields.date_start,
+                date_end: event.fields.date_end,
+                img: `${event.fields.cover.url}`,
+                id: event.id,
+              }}
+            />
           );
         })}
       </ol>
-    </div>
+    </Container>
   );
 };
 
