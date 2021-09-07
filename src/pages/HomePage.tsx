@@ -15,7 +15,7 @@ const Redirect = styled(Link)`
     font-size: ${fontSize.heading3};
     font-weight: 700;
     color: ${colors.grey800};
-    margin: 60px auto 0;
+    margin: 60px auto 140px;
   `}
 `;
 

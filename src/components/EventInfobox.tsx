@@ -8,16 +8,27 @@ import {
 } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 
+const Title = styled.h1`
+  margin-top: 60px;
+  font-weight: 700;
+  line-height: 55px;
+  ${({ theme: { colors, fontSize } }) => `
+    color: ${colors.grey800};
+    font-size: ${fontSize.articleHeading};
+  `}
+`;
+
 const Wrapper = styled.div`
   background: ${({ theme: { colors } }) => colors.grey100};
   width: 100%;
-  margin-top: 60px;
+  margin-top: 24px;
   margin-bottom: 60px;
   padding: 20px 30px;
   box-sizing: border-box;
 
-  h2 {
+  h3 {
     margin-bottom: 8px;
+    font-weight: 500;
   }
 
   p {
@@ -71,16 +82,16 @@ const EventInfobox: React.FC<EventInfoboxProps> = ({
 }) => {
   return (
     <>
-      <h1>Informations</h1>
+      <Title>Informations</Title>
       <Wrapper>
-        <h2>Dates</h2>
+        <h3>Dates</h3>
         <p>{parse(event.date_description)}</p>
-        <h2>Prix</h2>
+        <h3>Prix</h3>
         <p>
           {capitalizeFirstLetter(price.price_type)}{" "}
           {!!price.detail?.length && `: ${price.detail}`}
         </p>
-        <h2>S'y rendre</h2>
+        <h3>S'y rendre</h3>
         <p>
           {event.address_name}
           <br />
@@ -88,20 +99,24 @@ const EventInfobox: React.FC<EventInfoboxProps> = ({
           <br />
           {event.address_zipcode}
         </p>
-        <h2>En transport</h2>
+        <h3>En transport</h3>
         <p>{event.itinary}</p>
-        <h2>Contacts</h2>
+        <h3>Contacts</h3>
         <a href={contact.url} target="_blank" rel="noopener noreferrer">
           {contact.name}
         </a>
         <nav>
           {contact?.facebook && (
-            <a href={contact.facebook}>
+            <a
+              href={contact.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaFacebookSquare />
             </a>
           )}
           {contact?.twitter && (
-            <a href={contact.twitter}>
+            <a href={contact.twitter} target="_blank" rel="noopener noreferrer">
               <FaTwitterSquare />
             </a>
           )}
