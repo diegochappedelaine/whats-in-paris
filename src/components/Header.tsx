@@ -4,6 +4,15 @@ import { Link, NavLink } from "react-router-dom";
 
 import { theme } from "core/Theme";
 
+const FixedWrapper = styled.div`
+  background: white;
+  width: 100vw;
+  position: fixed;
+  z-index: 2;
+  box-shadow: 0px 5px 4px rgba(221, 221, 221, 0.25);
+  top: 0;
+`;
+
 const NavigationElements = [
   { url: "/", label: "Actus" },
   { url: "/events", label: "Sorties" },
@@ -50,30 +59,32 @@ const UnorderedList = styled.ul`
 
 const Header = () => {
   return (
-    <Container>
-      <HeaderContainer>
-        <Title to="/">QuoiDeNeuf</Title>
-        <nav>
-          <UnorderedList>
-            {NavigationElements.map(({ url, label }, index) => (
-              <li>
-                <NavElement
-                  strict
-                  exact
-                  activeStyle={{
-                    color: theme.colors.black100,
-                  }}
-                  to={url}
-                  key={index}
-                >
-                  {label}
-                </NavElement>
-              </li>
-            ))}
-          </UnorderedList>
-        </nav>
-      </HeaderContainer>
-    </Container>
+    <FixedWrapper>
+      <Container>
+        <HeaderContainer>
+          <Title to="/">QuoiDeNeuf</Title>
+          <nav>
+            <UnorderedList>
+              {NavigationElements.map(({ url, label }, index) => (
+                <li>
+                  <NavElement
+                    strict
+                    exact
+                    activeStyle={{
+                      color: theme.colors.black100,
+                    }}
+                    to={url}
+                    key={index}
+                  >
+                    {label}
+                  </NavElement>
+                </li>
+              ))}
+            </UnorderedList>
+          </nav>
+        </HeaderContainer>
+      </Container>
+    </FixedWrapper>
   );
 };
 

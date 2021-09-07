@@ -1,11 +1,17 @@
+import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useFetchLazy, useDebounce } from "hooks";
-import { EventCard, Input } from "components";
+import { EventCard, Input, HeroBanner } from "components";
 
 import { SEARCH_EVENTS_URL } from "api/end-points";
 import { GetEventsWithSearchQuery } from "global.d";
 import { Container } from "components/layouts";
+
+const OrderedList = styled.ol`
+  margin-top: 60px;
+  list-style-type: none;
+`;
 
 const EventsPage = () => {
   const history = useHistory();
@@ -39,29 +45,34 @@ const EventsPage = () => {
   }, [debouncedSearch]);
 
   return (
-    <Container>
-      <form onSubmit={handleSubmit}>
-        <Input value={search} handleChange={handleChange} />
-      </form>
+    <>
+      <HeroBanner />
 
-      <ol>
-        {data?.records.map(({ record: event }, index) => {
-          return (
-            <EventCard
-              key={index}
-              event={{
-                title: event.fields.title,
-                description: event.fields.lead_text,
-                date_start: event.fields.date_start,
-                date_end: event.fields.date_end,
-                img: `${event.fields.cover.url}`,
-                id: event.id,
-              }}
-            />
-          );
-        })}
-      </ol>
-    </Container>
+      <Container>
+        <form onSubmit={handleSubmit}>
+          <Input value={search} handleChange={handleChange} />
+        </form>
+
+        <OrderedList>
+          {data?.records.map(({ record: event }, index) => {
+            return (
+              <li key={index}>
+                <EventCard
+                  event={{
+                    title: event.fields.title,
+                    description: event.fields.lead_text,
+                    date_start: event.fields.date_start,
+                    date_end: event.fields.date_end,
+                    img: `${event.fields.cover.url}`,
+                    id: event.id,
+                  }}
+                />
+              </li>
+            );
+          })}
+        </OrderedList>
+      </Container>
+    </>
   );
 };
 

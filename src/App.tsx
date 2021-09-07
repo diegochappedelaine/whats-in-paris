@@ -9,9 +9,9 @@ const App = () => {
 
   return (
     <Theme>
+      <Header />
       <Layout>
-        <Header />
-        <HeroBanner />
+        {/* <HeroBanner /> */}
         <Switch location={location} key={location.pathname}>
           <Route path="/favorites" component={FavoritesPage} exact />
           <Route path="/event/:id" component={EventPage} exact />

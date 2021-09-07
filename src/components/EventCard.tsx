@@ -10,8 +10,9 @@ const Container = styled.article`
   box-shadow: 0px 5px 4px rgba(221, 221, 221, 0.25);
   border-radius: 5px;
   display: flex;
-  margin-top: 60px;
+  margin-bottom: 60px;
   max-height: 400px;
+  height: 100%;
 
   img {
     display: block;

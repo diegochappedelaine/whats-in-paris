@@ -22,8 +22,14 @@ const Button = styled.button<{ isFavorite: boolean }>`
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  background: ${({ isFavorite }) => (isFavorite ? "lightpink" : "white")};
+  transition: background-color 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    transform 100ms cubic-bezier(0.64, 0.04, 0.35, 1);
+
+  background-color: ${({ isFavorite }) => (isFavorite ? "lightpink" : "white")};
+
+  &:active {
+    transform: scale(0.98);
+  }
 `;
 
 const Icon = styled(FaBookmark)<{ isFavorite: boolean }>`
@@ -35,6 +41,7 @@ const Icon = styled(FaBookmark)<{ isFavorite: boolean }>`
 const HandleFavorite: React.FC<HandleFavoriteProps> = ({ id }) => {
   const { favoritesEvents, handleFavoriteEvent } = useAppContext();
   const isFavorite = favoritesEvents.includes(id);
+
   return (
     <AbsoluteElement>
       <Button
