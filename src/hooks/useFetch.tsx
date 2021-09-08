@@ -12,7 +12,8 @@ function useFetch<T>(url: string) {
         const result = await data.json();
         setData(result);
       } catch (error) {
-        return setError(error);
+        setError(error);
+        return setLoading(false);
       }
       const timeout = setTimeout(() => setLoading(false), 200);
 
