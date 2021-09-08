@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { GET_EVENT_BY_ID } from "api/end-points";
 import { GetEventByIdQuery } from "types";
 import { Container } from "components/layouts";
-import { ImageModal, Loading, ArticleContainer } from "components";
+import { ImageModal, Loading, ArticleContainer, Error } from "components";
 
 const BannerImage = styled.img`
   height: 380px;
@@ -30,7 +30,7 @@ const EventPage = () => {
   );
 
   if (loading) return <Loading />;
-  if (!data?.record) return <p>No data</p>;
+  if (!data?.record) return <Error />;
 
   const { id: eventId, fields: event } = data.record;
 

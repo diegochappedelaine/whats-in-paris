@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useFetchLazy, useDebounce } from "hooks";
-import { EventCard, Input, HeroBanner } from "components";
+import { EventCard, Input, HeroBanner, Loading } from "components";
 
 import { SEARCH_EVENTS_URL } from "api/end-points";
 import { GetEventsWithSearchQuery } from "types";
@@ -28,9 +28,9 @@ const OrderedList = styled.ol`
 const EventsPage = () => {
   const history = useHistory();
   const location = useLocation();
-  const { data, fetchData } = useFetchLazy<GetEventsWithSearchQuery>();
   const [search, setSearch] = useState<string>("");
   const debouncedSearch = useDebounce(search, 500);
+  const { data, fetchData, loading } = useFetchLazy<GetEventsWithSearchQuery>();
 
   useEffect(() => {
     const searchParams = location.search.split("=")?.[1];
@@ -64,8 +64,9 @@ const EventsPage = () => {
           <Input value={search} handleChange={handleChange} />
         </form>
 
+        {loading && <Loading />}
         <OrderedList>
-          {data?.records.map(({ record: event }, index) => {
+          {data?.records?.map(({ record: event }, index) => {
             return (
               <li key={index}>
                 <EventCard

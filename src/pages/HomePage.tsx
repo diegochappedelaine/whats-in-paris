@@ -2,7 +2,12 @@ import styled from "styled-components";
 import { useFetch } from "hooks";
 import { GetEventsWithSearchQuery } from "types";
 import { RETREIVE_LAST_EVENT } from "api/end-points";
-import { EventCard as _EventCard, Loading, HeroBanner } from "components";
+import {
+  EventCard as _EventCard,
+  Loading,
+  HeroBanner,
+  Error,
+} from "components";
 import { Container as _Container } from "components/layouts";
 import { Link } from "react-router-dom";
 
@@ -24,16 +29,17 @@ const Redirect = styled(Link)`
 `;
 
 const HomePage = () => {
-  const { data, loading } =
+  const { data, loading, error } =
     useFetch<GetEventsWithSearchQuery>(RETREIVE_LAST_EVENT);
 
-  const event = data?.records[0].record;
+  const event = data?.records?.[0].record;
 
   return (
     <>
       <HeroBanner />
       <Container>
         {loading && <Loading />}
+        {error && <Error />}
         {event && (
           <EventCard
             event={{

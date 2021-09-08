@@ -9,6 +9,8 @@ import EventInfobox from "./EventInfobox/EventInfobox";
 import Separator from "./Separator";
 import ArticleContainer from "./ArticleContainer/ArticleContainer";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
+import Error from "./Error";
+import FavoriteEmptyState from "./FavoriteEmptyState";
 
 export {
   Header,
@@ -22,4 +24,6 @@ export {
   Separator,
   ArticleContainer,
   BurgerMenu,
+  Error,
+  FavoriteEmptyState,
 };

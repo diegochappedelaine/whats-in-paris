@@ -1,6 +1,6 @@
 import { useFetchFavoritesEvents } from "hooks";
 import styled from "styled-components";
-import { EventCard, Loading } from "components";
+import { Error, EventCard, Loading, FavoriteEmptyState } from "components";
 import { Container as _Container } from "components/layouts";
 import { useAppContext } from "provider/AppProvider";
 
@@ -18,15 +18,18 @@ const UnorderedList = styled.ul`
 `;
 
 const FavoritesPage = () => {
-  const { data, loading } = useFetchFavoritesEvents();
+  const { data, loading, error } = useFetchFavoritesEvents();
   const { favoritesEvents } = useAppContext();
 
   const favorites = data?.filter(({ record: event }) =>
     favoritesEvents.includes(event.id)
   );
 
+  console.log(favorites);
+
   if (loading) return <Loading />;
-  if (!favorites) return <p>No data</p>;
+  if (error) return <Error />;
+  if (!favorites?.length) return <FavoriteEmptyState />;
 
   return (
     <Container>
@@ -39,7 +42,7 @@ const FavoritesPage = () => {
                 description: event.fields.lead_text,
                 date_start: event.fields.date_start,
                 date_end: event.fields.date_end,
-                img: `${event.fields.cover.url}`,
+                img: event.fields.cover.url,
                 id: event.id,
               }}
             />
