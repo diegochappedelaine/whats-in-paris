@@ -2,12 +2,16 @@ import styled from "styled-components";
 import { useFetch } from "hooks";
 import { GetEventsWithSearchQuery } from "global.d";
 import { RETREIVE_LAST_EVENT } from "api/end-points";
-import { EventCard, Loading, HeroBanner } from "components";
+import { EventCard as _EventCard, Loading, HeroBanner } from "components";
 import { Container as _Container } from "components/layouts";
 import { Link } from "react-router-dom";
 
 const Container = styled(_Container)`
   margin-top: 60px;
+`;
+
+const EventCard = styled(_EventCard)`
+  margin-top: 40px;
 `;
 
 const Redirect = styled(Link)`

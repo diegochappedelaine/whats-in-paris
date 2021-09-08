@@ -23,7 +23,10 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 0;
+  padding: 24px 24px;
+  @media (min-width: 800px) {
+    padding: 24px 0;
+  }
 `;
 
 const Title = styled(Link)`

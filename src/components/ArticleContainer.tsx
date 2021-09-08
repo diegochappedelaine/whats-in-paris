@@ -8,7 +8,9 @@ import { GetEventByIdQuery } from "global.d";
 import parse from "html-react-parser";
 
 const HandleFavorite = styled(_HandleFavorite)`
-  right: -40px;
+  @media (min-width: 800px) {
+    right: -40px;
+  }
 `;
 
 const Container = styled.article`
@@ -16,6 +18,11 @@ const Container = styled.article`
   max-width: 765px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 8px;
+
+  @media (min-width: 800px) {
+    padding: O;
+  }
 
   ${({ theme: { colors, fontSize } }) => `
     h1 {

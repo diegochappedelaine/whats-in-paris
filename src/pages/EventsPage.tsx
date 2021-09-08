@@ -6,7 +6,18 @@ import { EventCard, Input, HeroBanner } from "components";
 
 import { SEARCH_EVENTS_URL } from "api/end-points";
 import { GetEventsWithSearchQuery } from "global.d";
-import { Container } from "components/layouts";
+import { Container as _Container } from "components/layouts";
+
+const Container = styled(_Container)`
+  padding: 0 8px;
+  @media (min-width: 800px) {
+    padding: 0;
+  }
+
+  form {
+    padding: 0 32px;
+  }
+`;
 
 const OrderedList = styled.ol`
   margin-top: 60px;

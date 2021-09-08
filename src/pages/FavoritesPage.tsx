@@ -1,8 +1,15 @@
 import { useFetchFavoritesEvents } from "hooks";
 import styled from "styled-components";
 import { EventCard, Loading } from "components";
-import { Container } from "components/layouts";
+import { Container as _Container } from "components/layouts";
 import { useAppContext } from "provider/AppProvider";
+
+const Container = styled(_Container)`
+  padding: 0 8px;
+  @media (min-width: 800px) {
+    padding: 0;
+  }
+`;
 
 const UnorderedList = styled.ul`
   margin-top: 60px;

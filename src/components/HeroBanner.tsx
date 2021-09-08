@@ -39,7 +39,7 @@ const Section = styled.section`
 const TextSection = styled.div`
   ${({ theme: { colors, fontSize } }) => `
     h1 {
-      font-size: ${fontSize.heading1};
+      font-size: ${fontSize.heading2};
       font-weight: 700;
       line-height: 73px;
       margin-bottom: 16px;
@@ -47,9 +47,19 @@ const TextSection = styled.div`
 
     p {
       color: ${colors.grey700};
-      font-size: ${fontSize.subtitle};
       text-transform: lowercase;
+      font-size: ${fontSize.textBig};
     }
+
+      @media (min-width: 800px) {
+        h1 {
+          font-size: ${fontSize.heading1};
+        }
+
+        p {
+          font-size: ${fontSize.subtitle};
+        }
+      }
   `}
 `;
 

@@ -10,23 +10,32 @@ const Container = styled.article`
   box-shadow: 0px 5px 4px rgba(221, 221, 221, 0.25);
   border-radius: 5px;
   display: flex;
+  flex-direction: column;
   margin-bottom: 60px;
-  max-height: 400px;
   height: 100%;
+  @media (min-width: 800px) {
+    flex-direction: row;
+  }
 
   img {
     display: block;
-    max-width: 50%;
     width: 100%;
     object-fit: cover;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+
+    @media (min-width: 800px) {
+      max-width: 50%;
+      width: 100%;
+    }
   }
 `;
 
 const TextContainer = styled.div`
   padding: 60px;
-  width: 50%;
+  @media (min-width: 800px) {
+    width: 50%;
+  }
   display: flex;
   flex-direction: column;
   ${({ theme: { colors, fontSize } }) => `
@@ -70,6 +79,7 @@ const UnStyledLink = styled(Link)`
 `;
 
 type EventCardProps = {
+  className?: string;
   event: {
     title: string;
     description: string;
@@ -80,9 +90,9 @@ type EventCardProps = {
   };
 };
 
-const EventCard: React.FC<EventCardProps> = ({ event }) => {
+const EventCard: React.FC<EventCardProps> = ({ className, event }) => {
   return (
-    <UnStyledLink to={{ pathname: `/event/${event.id}` }}>
+    <UnStyledLink className={className} to={{ pathname: `/event/${event.id}` }}>
       <Container>
         <HandleFavorite id={event.id} />
         <TextContainer>
