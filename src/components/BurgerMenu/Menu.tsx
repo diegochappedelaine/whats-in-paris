@@ -1,5 +1,5 @@
 import { UnorderedList, StyledMenu } from "./BurgerMenu.styled";
-import { NavElement } from "components/Header";
+import { NavElement } from "components/Header/Header.styled";
 import { theme } from "core/Theme";
 
 import { NavigationElements } from "./BurgerMenu";

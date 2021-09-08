@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useFetch } from "hooks";
-import { GetEventsWithSearchQuery } from "global.d";
+import { GetEventsWithSearchQuery } from "types";
 import { RETREIVE_LAST_EVENT } from "api/end-points";
 import { EventCard as _EventCard, Loading, HeroBanner } from "components";
 import { Container as _Container } from "components/layouts";

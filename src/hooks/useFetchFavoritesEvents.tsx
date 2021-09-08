@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAppContext } from "provider/AppProvider";
 import { GET_EVENT_BY_ID } from "api/end-points";
-import { GetEventByIdQuery } from "global.d";
+import { GetEventByIdQuery } from "types";
 
 function useFetchFavoritesEvents() {
   const { favoritesEvents } = useAppContext();
@@ -18,8 +18,6 @@ function useFetchFavoritesEvents() {
           const preFetchData = await fetch(`${GET_EVENT_BY_ID}/${id}`);
           return preFetchData.json();
         });
-        // an async/await iteration of dataFetch wont return an array of data, but an array of promise
-        // I solve this using Promise.all
         const payload = await Promise.all(detailsData);
         setData(payload);
       } catch (error) {

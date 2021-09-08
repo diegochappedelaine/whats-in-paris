@@ -5,7 +5,7 @@ import { useFetchLazy, useDebounce } from "hooks";
 import { EventCard, Input, HeroBanner } from "components";
 
 import { SEARCH_EVENTS_URL } from "api/end-points";
-import { GetEventsWithSearchQuery } from "global.d";
+import { GetEventsWithSearchQuery } from "types";
 import { Container as _Container } from "components/layouts";
 
 const Container = styled(_Container)`

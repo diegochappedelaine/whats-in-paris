@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import parse from "html-react-parser";
 import { Link } from "react-router-dom";
-import { HandleFavorite } from "components";
 
-const Container = styled.article`
+export const Container = styled.article`
   position: relative;
   border: 1px solid #e2e2e2;
   box-sizing: border-box;
@@ -33,7 +31,7 @@ const Container = styled.article`
   }
 `;
 
-const TextContainer = styled.div`
+export const TextContainer = styled.div`
   padding: 60px;
   @media (min-width: ${({ theme: { breakpoints } }) =>
       `${breakpoints.mobile}px`}) {
@@ -77,42 +75,6 @@ const TextContainer = styled.div`
   `};
 `;
 
-const UnStyledLink = styled(Link)`
+export const UnStyledLink = styled(Link)`
   text-decoration: none;
 `;
-
-type EventCardProps = {
-  className?: string;
-  event: {
-    title: string;
-    description: string;
-    date_start: string;
-    date_end: string;
-    img: string;
-    id: string;
-  };
-};
-
-const EventCard: React.FC<EventCardProps> = ({ className, event }) => {
-  return (
-    <UnStyledLink className={className} to={{ pathname: `/event/${event.id}` }}>
-      <Container>
-        <HandleFavorite id={event.id} />
-        <TextContainer>
-          <h2>{event.title}</h2>
-          <p>{parse(event.description)}</p>
-          <div>
-            <span>
-              {new Date(event.date_start).toLocaleDateString()} -{" "}
-              {new Date(event.date_end).toLocaleDateString()}
-            </span>
-            <span className="hover">En savoir plus</span>
-          </div>
-        </TextContainer>
-        <img src={event.img} alt={event.title} />
-      </Container>
-    </UnStyledLink>
-  );
-};
-
-export default EventCard;

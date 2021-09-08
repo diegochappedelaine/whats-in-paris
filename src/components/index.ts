@@ -1,13 +1,14 @@
-import Header from "./Header";
-import HeroBanner from "./HeroBanner";
-import EventCard from "./EventCard";
+import Header from "./Header/Header";
+import HeroBanner from "./HeroBanner/HeroBanner";
+import EventCard from "./EventCard/EventCard";
 import Loading from "./Loading";
 import Input from "./Input";
-import HandleFavorite from "./HandleFavorite";
+import HandleFavorite from "./HandleFavorite/HandleFavorite";
 import ImageModal from "./ImageModal";
-import EventInfobox from "./EventInfobox";
+import EventInfobox from "./EventInfobox/EventInfobox";
 import Separator from "./Separator";
-import ArticleContainer from "./ArticleContainer";
+import ArticleContainer from "./ArticleContainer/ArticleContainer";
+import BurgerMenu from "./BurgerMenu/BurgerMenu";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   EventInfobox,
   Separator,
   ArticleContainer,
+  BurgerMenu,
 };
