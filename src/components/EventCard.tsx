@@ -13,7 +13,8 @@ const Container = styled.article`
   flex-direction: column;
   margin-bottom: 60px;
   height: 100%;
-  @media (min-width: 800px) {
+  @media (min-width: ${({ theme: { breakpoints } }) =>
+      `${breakpoints.mobile}px`}) {
     flex-direction: row;
   }
 
@@ -24,7 +25,8 @@ const Container = styled.article`
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 
-    @media (min-width: 800px) {
+    @media (min-width: ${({ theme: { breakpoints } }) =>
+        `${breakpoints.mobile}px`}) {
       max-width: 50%;
       width: 100%;
     }
@@ -33,7 +35,8 @@ const Container = styled.article`
 
 const TextContainer = styled.div`
   padding: 60px;
-  @media (min-width: 800px) {
+  @media (min-width: ${({ theme: { breakpoints } }) =>
+      `${breakpoints.mobile}px`}) {
     width: 50%;
   }
   display: flex;

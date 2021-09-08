@@ -47,7 +47,8 @@ export const StyledBurger = styled.button<{ isOpen: boolean }>`
   cursor: pointer;
   padding: 0;
   z-index: 10;
-  @media (min-width: 800px) {
+  @media (min-width: ${({ theme: { breakpoints } }) =>
+      `${breakpoints.mobile}px`}) {
     display: none;
   }
 

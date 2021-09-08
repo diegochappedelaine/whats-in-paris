@@ -18,7 +18,8 @@ const Section = styled.section`
     width: 100%;
     text-align: center;
 
-    @media (min-width: 800px) {
+    @media (min-width: ${({ theme: { breakpoints } }) =>
+        `${breakpoints.mobile}px`}) {
       width: 50%;
     }
   }
@@ -26,7 +27,8 @@ const Section = styled.section`
   > div:last-child {
     display: none;
 
-    @media (min-width: 800px) {
+    @media (min-width: ${({ theme: { breakpoints } }) =>
+        `${breakpoints.mobile}px`}) {
       display: block;
     }
   }
@@ -51,7 +53,8 @@ const TextSection = styled.div`
       font-size: ${fontSize.textBig};
     }
 
-      @media (min-width: 800px) {
+      @media (min-width: ${({ theme: { breakpoints } }) =>
+        `${breakpoints.mobile}px`}) {
         h1 {
           font-size: ${fontSize.heading1};
         }

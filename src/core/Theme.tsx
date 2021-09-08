@@ -23,6 +23,7 @@ export const theme = {
     textMedium: "16px",
     textBig: "18px",
   },
+  breakpoints: { mobile: 800 },
   colors: { black100, grey100, grey200, grey600, grey700, grey800, primary },
   boxShadow: { regular: "0px 5px 4px rgba(221, 221, 221, 0.25)" },
 };

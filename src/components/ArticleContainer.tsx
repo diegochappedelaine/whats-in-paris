@@ -8,7 +8,8 @@ import { GetEventByIdQuery } from "global.d";
 import parse from "html-react-parser";
 
 const HandleFavorite = styled(_HandleFavorite)`
-  @media (min-width: 800px) {
+  @media (min-width: ${({ theme: { breakpoints } }) =>
+      `${breakpoints.mobile}px`}) {
     right: -40px;
   }
 `;
@@ -20,7 +21,8 @@ const Container = styled.article`
   margin: 0 auto;
   padding: 0 8px;
 
-  @media (min-width: 800px) {
+  @media (min-width: ${({ theme: { breakpoints } }) =>
+      `${breakpoints.mobile}px`}) {
     padding: O;
   }
 

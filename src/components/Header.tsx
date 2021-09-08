@@ -18,7 +18,8 @@ const FixedWrapper = styled.div`
 
 const DesktopNav = styled.nav`
   display: none;
-  @media (min-width: 800px) {
+  @media (min-width: ${({ theme: { breakpoints } }) =>
+      `${breakpoints.mobile}px`}) {
     display: flex;
   }
 `;
@@ -35,7 +36,8 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   padding: 24px 24px;
 
-  @media (min-width: 800px) {
+  @media (min-width: ${({ theme: { breakpoints } }) =>
+      `${breakpoints.mobile}px`}) {
     padding: 24px 0;
   }
 `;

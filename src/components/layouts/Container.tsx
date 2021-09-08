@@ -6,7 +6,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 800px) {
+  @media (min-width: ${({ theme: { breakpoints } }) =>
+      `${breakpoints.mobile}px`}) {
     padding: 0 32px;
   }
 `;
