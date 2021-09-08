@@ -6,7 +6,6 @@ const InputText = styled.input`
   outline: transparent solid 2px;
   outline-offset: 2px;
   position: relative;
-  appearance: none;
   font-size: 1rem;
   padding-inline-start: 1rem;
   padding-inline-end: 1rem;
@@ -14,9 +13,6 @@ const InputText = styled.input`
   border-radius: 0.375rem;
   border-width: 1px;
   border-style: solid;
-  border-image: initial;
-  border-color: inherit;
-  background: inherit;
   border: 1px solid #e2e2e2;
   box-sizing: border-box;
   margin-top: 32px;

@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { Container } from "components/layouts";
 import { Link, NavLink } from "react-router-dom";
+import { useWindowSize } from "hooks";
 
 import { theme } from "core/Theme";
+
+import BurgerMenu from "components/BurgerMenu/BurgerMenu";
 
 const FixedWrapper = styled.div`
   background: white;
@@ -11,6 +14,13 @@ const FixedWrapper = styled.div`
   z-index: 2;
   box-shadow: 0px 5px 4px rgba(221, 221, 221, 0.25);
   top: 0;
+`;
+
+const DesktopNav = styled.nav`
+  display: none;
+  @media (min-width: 800px) {
+    display: flex;
+  }
 `;
 
 const NavigationElements = [
@@ -24,6 +34,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 24px 24px;
+
   @media (min-width: 800px) {
     padding: 24px 0;
   }
@@ -38,7 +49,7 @@ const Title = styled(Link)`
   `}
 `;
 
-const NavElement = styled(NavLink)`
+export const NavElement = styled(NavLink)`
   font-weight: 400;
   text-decoration: none;
   transition: color 0.1s ease-out;
@@ -61,12 +72,14 @@ const UnorderedList = styled.ul`
 `;
 
 const Header = () => {
+  const { width } = useWindowSize();
+
   return (
     <FixedWrapper>
       <Container>
         <HeaderContainer>
           <Title to="/">QuoiDeNeuf</Title>
-          <nav>
+          <DesktopNav>
             <UnorderedList>
               {NavigationElements.map(({ url, label }, index) => (
                 <li>
@@ -84,7 +97,10 @@ const Header = () => {
                 </li>
               ))}
             </UnorderedList>
-          </nav>
+          </DesktopNav>
+          {width < 800 && (
+            <BurgerMenu navigationElements={NavigationElements} />
+          )}
         </HeaderContainer>
       </Container>
     </FixedWrapper>

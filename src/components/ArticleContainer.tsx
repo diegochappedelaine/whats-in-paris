@@ -57,6 +57,9 @@ const Container = styled.article`
 const ParsedContent = styled.div`
   * {
     margin-bottom: 16px;
+    img {
+      max-width: 100%;
+    }
   }
 `;
 
