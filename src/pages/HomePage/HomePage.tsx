@@ -16,7 +16,7 @@ const HomePage = () => {
       <Container>
         {loading && <Loading />}
         {error && <Error />}
-        {event && (
+        {!loading && event && (
           <EventCard
             event={{
               title: event.fields.title,

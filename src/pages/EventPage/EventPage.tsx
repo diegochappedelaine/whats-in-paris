@@ -21,7 +21,7 @@ const EventPage = () => {
       : `quoiDeNeuf`
   );
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading height={"calc(100vh - 68px)"} />;
   if (!data?.record) return <Error />;
 
   const { id: eventId, fields: event } = data.record;

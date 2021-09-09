@@ -30,5 +30,9 @@ export const PageChoiceButton = styled(Link)<{ $isCurrentPage: boolean }>`
   ${({ $isCurrentPage, theme: { colors } }) => `
     background-color: ${$isCurrentPage ? colors.primary : "white"};
     color: ${$isCurrentPage ? "white" : "black"};
+
+    &:hover {
+     color: ${$isCurrentPage ? "lightgrey" : colors.primary};
+    }
   `};
 `;

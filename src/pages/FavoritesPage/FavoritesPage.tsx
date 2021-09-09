@@ -12,7 +12,7 @@ const FavoritesPage = () => {
     favoritesEvents.includes(event.id)
   );
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading height={"calc(100vh - 68px)"} />;
   if (error) return <Error />;
   if (!favorites?.length) return <FavoriteEmptyState />;
 

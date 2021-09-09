@@ -46,12 +46,7 @@ const ArticleContainer: React.FC<ArticleContainerProps> = ({ event, id }) => {
       <Separator />
       <ParsedContent>{parse(event.description)}</ParsedContent>
       <Separator />
-      <EventInfobox
-        event={eventInfos}
-        contact={contacts}
-        position={{ lat: event.lat_lon.lat, long: event.lat_lon.lon }}
-        price={priceInfos}
-      />
+      <EventInfobox event={eventInfos} contact={contacts} price={priceInfos} />
     </Container>
   );
 };

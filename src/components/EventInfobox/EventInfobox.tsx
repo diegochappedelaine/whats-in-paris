@@ -24,10 +24,7 @@ type EventInfoboxProps = {
     facebook: string | null;
     mail: string | null;
   };
-  position: {
-    lat: number;
-    long: number;
-  };
+
   price: {
     price_type: string;
     detail: string | null;
@@ -37,7 +34,6 @@ type EventInfoboxProps = {
 const EventInfobox: React.FC<EventInfoboxProps> = ({
   event,
   contact,
-  position,
   price,
 }) => {
   return (
