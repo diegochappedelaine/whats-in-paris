@@ -19,14 +19,14 @@ const HandleFavorite: React.FC<HandleFavoriteProps> = ({
     <AbsoluteElement className={className}>
       <Button
         defaultBackgroundColor={defaultBackgroundColor}
-        isFavorite={isFavorite}
+        $isFavorite={isFavorite}
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           e.stopPropagation();
           e.preventDefault();
           handleFavoriteEvent(id);
         }}
       >
-        <Icon isFavorite={isFavorite} />
+        <Icon $isFavorite={isFavorite} />
       </Button>
     </AbsoluteElement>
   );

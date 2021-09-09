@@ -29,7 +29,7 @@ const Header = () => {
           <DesktopNav>
             <UnorderedList>
               {NAVIGATION_ELEMENTS.map(({ url, label }, index) => (
-                <li>
+                <li key={index}>
                   <NavElement
                     strict
                     exact
@@ -37,7 +37,6 @@ const Header = () => {
                       color: theme.colors.black100,
                     }}
                     to={url}
-                    key={index}
                   >
                     {label}
                   </NavElement>

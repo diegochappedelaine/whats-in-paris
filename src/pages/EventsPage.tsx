@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import { useFetchLazy, useDebounce } from "hooks";
+import { useHistory } from "react-router-dom";
+import { useFetchLazy, useQuery } from "hooks";
 import { EventCard, Input, HeroBanner, Loading } from "components";
 
 import { SEARCH_EVENTS_URL } from "api/end-points";
 import { GetEventsWithSearchQuery } from "types";
 import { Container as _Container } from "components/layouts";
+import { handlePagination } from "utils";
+import Pagination from "components/Pagination/Pagination";
 
 const Container = styled(_Container)`
   padding: 0 8px;
@@ -25,19 +27,34 @@ const OrderedList = styled.ol`
   list-style-type: none;
 `;
 
+const EVENTS_PER_PAGE = 10;
+
 const EventsPage = () => {
   const history = useHistory();
-  const location = useLocation();
   const [search, setSearch] = useState<string>("");
-  const debouncedSearch = useDebounce(search, 500);
   const { data, fetchData, loading } = useFetchLazy<GetEventsWithSearchQuery>();
 
-  useEffect(() => {
-    const searchParams = location.search.split("=")?.[1];
+  const query = useQuery();
+
+  const currentPage = query.page ? Number(query.page) : 1;
+
+  const fetchingDatas = (page: number) => {
+    let url = `${SEARCH_EVENTS_URL}&limit=${EVENTS_PER_PAGE}`;
+
+    const searchParams = query.search;
+
     if (searchParams) {
-      setSearch(searchParams);
+      url += `&search=${searchParams.replace(" ", "%20")}`;
     }
-  }, [location.search]);
+
+    url += `&offset=${handlePagination(page, EVENTS_PER_PAGE).offset}`;
+    fetchData(url);
+  };
+
+  useEffect(() => {
+    fetchingDatas(currentPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value);
@@ -46,15 +63,9 @@ const EventsPage = () => {
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
-    fetchData(`${SEARCH_EVENTS_URL}&search=${search}`);
+    if (!search.trim().length) return;
+    fetchingDatas(1);
   };
-
-  useEffect(() => {
-    if ((debouncedSearch as string).length) {
-      fetchData(`${SEARCH_EVENTS_URL}&search=${debouncedSearch}`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearch]);
 
   return (
     <>
@@ -83,6 +94,14 @@ const EventsPage = () => {
             );
           })}
         </OrderedList>
+        {!!data?.total_count && (
+          <Pagination
+            // currentPage={page}
+            // changePage={changePage}
+            currentPage={Number(currentPage)}
+            lastPage={Math.ceil(data.total_count / EVENTS_PER_PAGE)}
+          />
+        )}
       </Container>
     </>
   );

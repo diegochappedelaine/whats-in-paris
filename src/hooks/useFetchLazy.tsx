@@ -14,7 +14,11 @@ function useFetchLazy<T = unknown>() {
     } catch (error) {
       setError(error);
     }
-    setLoading(false);
+    const timeout = setTimeout(() => setLoading(false), 200);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   };
   // This variant of useFetch hook is inspired by the one from appolo/graphql
   // data is not fetch when excuting useFetchLazy() but when executing fetchData from const {fetchData} = useFetchLazy();

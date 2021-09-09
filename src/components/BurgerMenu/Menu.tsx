@@ -19,7 +19,7 @@ const Menu: React.FC<MenuProps> = ({
     <StyledMenu isOpen={isOpen}>
       <UnorderedList>
         {navigationElements.map(({ url, label }, index) => (
-          <li>
+          <li key={index}>
             <NavElement
               onClick={toggleOpen}
               strict
@@ -28,7 +28,6 @@ const Menu: React.FC<MenuProps> = ({
                 color: theme.colors.black100,
               }}
               to={url}
-              key={index}
             >
               {label}
             </NavElement>

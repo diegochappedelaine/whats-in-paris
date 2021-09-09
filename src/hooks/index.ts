@@ -4,6 +4,7 @@ import useDebounce from "./useDebounce";
 import useFetchFavoritesEvents from "./useFetchFavoritesEvents";
 import useOnClickOutside from "./useOnClickOutside";
 import useWindowSize from "./useWindowSize";
+import useQuery from "./useQuery";
 
 export {
   useFetch,
@@ -12,4 +13,5 @@ export {
   useFetchFavoritesEvents,
   useOnClickOutside,
   useWindowSize,
+  useQuery,
 };
