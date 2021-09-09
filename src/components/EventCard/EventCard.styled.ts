@@ -13,7 +13,7 @@ export const Container = styled.article`
   @media (min-width: ${({ theme: { breakpoints } }) =>
       `${breakpoints.mobile}px`}) {
     flex-direction: row;
-    height: 440px;
+    height: 400px;
   }
 
   > img {
