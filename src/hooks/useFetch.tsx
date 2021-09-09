@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
-function useFetch<T>(url: string) {
+function useFetch<T>(url: string): {
+  error: unknown;
+  loading: boolean;
+  data: T | undefined;
+} {
   const [error, setError] = useState<unknown>();
   const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<T>();

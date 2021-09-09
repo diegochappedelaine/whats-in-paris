@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-function useFetchLazy<T = unknown>() {
+function useFetchLazy<T = unknown>(): {
+  error: unknown;
+  loading: boolean;
+  data: T | undefined;
+  fetchData: (url: string) => Promise<() => void>;
+} {
   const [error, setError] = useState<unknown>();
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<T>();

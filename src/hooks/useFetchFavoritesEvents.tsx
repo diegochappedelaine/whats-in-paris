@@ -3,7 +3,11 @@ import { useAppContext } from "provider/AppProvider";
 import { GET_EVENT_BY_ID } from "api/end-points";
 import { GetEventByIdQuery } from "types";
 
-function useFetchFavoritesEvents() {
+function useFetchFavoritesEvents(): {
+  error: unknown;
+  loading: boolean;
+  data: GetEventByIdQuery[] | undefined;
+} {
   const { favoritesEvents } = useAppContext();
 
   const [error, setError] = useState<unknown>();
