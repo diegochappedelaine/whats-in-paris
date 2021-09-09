@@ -27,9 +27,14 @@ const FooterContainer = styled.footer`
   height: 88px;
 
   p {
-    ${({ theme: { colors, fontSize } }) => `
+    ${({ theme: { colors, fontSize, breakpoints } }) => `
         font-size: ${fontSize.textMedium};
         color: ${colors.grey600};
+        display: none;
+
+        @media (min-width: ${breakpoints.mobile}px) {
+          display: flex;
+        }
    `}
   }
 
