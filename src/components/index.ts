@@ -14,6 +14,7 @@ import FavoriteEmptyState from "./FavoriteEmptyState";
 import ScrollToTop from "./ScrollToTop";
 import Button from "./Button";
 import Pagination from "./Pagination/Pagination";
+import Footer from "./Footer/Footer";
 
 export {
   Header,
@@ -32,4 +33,5 @@ export {
   ScrollToTop,
   Button,
   Pagination,
+  Footer,
 };
