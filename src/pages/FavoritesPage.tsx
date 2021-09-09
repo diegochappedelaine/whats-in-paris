@@ -25,8 +25,6 @@ const FavoritesPage = () => {
     favoritesEvents.includes(event.id)
   );
 
-  console.log(favorites);
-
   if (loading) return <Loading />;
   if (error) return <Error />;
   if (!favorites?.length) return <FavoriteEmptyState />;

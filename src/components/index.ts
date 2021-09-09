@@ -11,6 +11,7 @@ import ArticleContainer from "./ArticleContainer/ArticleContainer";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import Error from "./Error";
 import FavoriteEmptyState from "./FavoriteEmptyState";
+import ScrollToTop from "./ScrollToTop";
 
 export {
   Header,
@@ -26,4 +27,5 @@ export {
   BurgerMenu,
   Error,
   FavoriteEmptyState,
+  ScrollToTop,
 };

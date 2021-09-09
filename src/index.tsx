@@ -4,12 +4,14 @@ import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import AppContext from "provider/AppProvider";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ScrollToTop } from "components";
 
 import "core/styles/base.scss";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <ScrollToTop />
       <AppContext>
         <App />
       </AppContext>
