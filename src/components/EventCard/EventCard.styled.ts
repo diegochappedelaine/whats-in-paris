@@ -10,6 +10,7 @@ export const Container = styled.article`
   display: flex;
   flex-direction: column-reverse;
   margin-bottom: 60px;
+  overflow: hidden;
   @media (min-width: ${({ theme: { breakpoints } }) =>
       `${breakpoints.mobile}px`}) {
     flex-direction: row;
@@ -40,16 +41,15 @@ export const TextContainer = styled.div`
   @media (min-width: ${({ theme: { breakpoints } }) =>
       `${breakpoints.mobile}px`}) {
     width: 50%;
-    padding: 60px;
+    padding: 40px 60px;
   }
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  ${({ theme: { colors, fontSize } }) => `
+  ${({ theme: { colors, fontSize, breakpoints } }) => `
     h2 {
-        font-size: ${fontSize.subtitle};
         color: ${colors.grey800};
         font-weight: 700;
-        line-height: 40px;
         margin-bottom: 32px;
     }
 
@@ -76,6 +76,13 @@ export const TextContainer = styled.div`
         margin-top: auto;
         display: flex;
         justify-content: space-between
+    }
+
+    @media (min-width: ${breakpoints.mobile}px) {
+      h2 {
+        font-size: ${fontSize.subtitle};
+        line-height: 40px;
+      }
     }
   `};
 `;
