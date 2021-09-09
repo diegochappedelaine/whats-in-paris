@@ -13,7 +13,7 @@ import { Form, Container, OrderedList } from "./EventsPage.styled";
 
 import { SEARCH_EVENTS_URL } from "api/end-points";
 import { GetEventsWithSearchQuery } from "types";
-import { getPaginationOffset } from "utils";
+import { getPaginationOffset, queryToString } from "utils";
 
 const EVENTS_PER_PAGE = 10;
 
@@ -36,6 +36,8 @@ const EventsPage = () => {
     }
 
     url += `&offset=${getPaginationOffset(page, EVENTS_PER_PAGE)}`;
+    const newQueries = queryToString({ ...query, page: page.toString() });
+    history.push({ search: newQueries });
     fetchData(url);
   };
 
@@ -46,7 +48,8 @@ const EventsPage = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value);
-    history.push({ search: `?search=${e.target.value}` });
+    const newQueries = queryToString({ ...query, search: e.target.value });
+    history.push({ search: newQueries });
   };
 
   const handleSubmit = (e: React.FormEvent): void => {

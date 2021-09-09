@@ -32,7 +32,6 @@ const EventCard: React.FC<EventCardProps> = ({ className, event }) => {
           </div>
         </TextContainer>
         <Image src={event.img} />
-        {/* <img src={event.img} alt={event.title} /> */}
       </Container>
     </UnStyledLink>
   );

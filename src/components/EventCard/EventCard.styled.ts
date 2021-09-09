@@ -24,6 +24,7 @@ export const Container = styled.article`
     border-top-left-radius: 5px;
     border-radius: 5px 5px 0 0;
     filter: brightness(80%);
+    height: 400px;
 
     @media (min-width: ${({ theme: { breakpoints } }) =>
         `${breakpoints.mobile}px`}) {

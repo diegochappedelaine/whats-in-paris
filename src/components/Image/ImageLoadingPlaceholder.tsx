@@ -8,6 +8,7 @@ const ImageWrapper = styled.div<{ $isLoaded: boolean }>`
   display: ${({ $isLoaded }) => ($isLoaded ? "none" : "grid")};
   place-items: center;
   border-radius: 5px 5px 0 0;
+  height: 400px;
 
   @media (min-width: ${({ theme: { breakpoints } }) =>
       `${breakpoints.mobile}px`}) {

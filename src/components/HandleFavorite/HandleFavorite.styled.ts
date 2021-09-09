@@ -5,6 +5,7 @@ export const AbsoluteElement = styled.div`
   position: absolute;
   z-index: 1;
   right: 0;
+  top: 0;
   margin: 10px;
 `;
 
