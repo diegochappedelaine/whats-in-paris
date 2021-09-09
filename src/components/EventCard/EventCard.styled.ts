@@ -8,34 +8,38 @@ export const Container = styled.article`
   box-shadow: 0px 5px 4px rgba(221, 221, 221, 0.25);
   border-radius: 5px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   margin-bottom: 60px;
-  height: 100%;
   @media (min-width: ${({ theme: { breakpoints } }) =>
       `${breakpoints.mobile}px`}) {
     flex-direction: row;
+    height: 440px;
   }
 
-  img {
+  > img {
     display: block;
     width: 100%;
     object-fit: cover;
     border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-radius: 5px 5px 0 0;
+    filter: brightness(80%);
 
     @media (min-width: ${({ theme: { breakpoints } }) =>
         `${breakpoints.mobile}px`}) {
       max-width: 50%;
       width: 100%;
+      border-radius: 0 5px 5px 0;
     }
   }
 `;
 
 export const TextContainer = styled.div`
-  padding: 60px;
+  padding: 30px 40px 50px;
   @media (min-width: ${({ theme: { breakpoints } }) =>
       `${breakpoints.mobile}px`}) {
     width: 50%;
+    padding: 60px;
   }
   display: flex;
   flex-direction: column;

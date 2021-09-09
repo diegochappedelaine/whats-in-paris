@@ -13,7 +13,7 @@ import { Form, Container, OrderedList } from "./EventsPage.styled";
 
 import { SEARCH_EVENTS_URL } from "api/end-points";
 import { GetEventsWithSearchQuery } from "types";
-import { handlePagination } from "utils";
+import { getPaginationOffset } from "utils";
 
 const EVENTS_PER_PAGE = 10;
 
@@ -35,7 +35,7 @@ const EventsPage = () => {
       url += `&search=${searchParams.replace(" ", "%20")}`;
     }
 
-    url += `&offset=${handlePagination(page, EVENTS_PER_PAGE).offset}`;
+    url += `&offset=${getPaginationOffset(page, EVENTS_PER_PAGE)}`;
     fetchData(url);
   };
 
@@ -64,7 +64,7 @@ const EventsPage = () => {
           <Button>Rechercher</Button>
         </Form>
 
-        {loading && <Loading />}
+        {loading && <Loading height="1200px" />}
         <OrderedList>
           {!loading &&
             data?.records?.map(({ record: event }, index) => {

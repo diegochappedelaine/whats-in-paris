@@ -1,6 +1,7 @@
 import parse from "html-react-parser";
 import { HandleFavorite } from "components";
 import { UnStyledLink, Container, TextContainer } from "./EventCard.styled";
+import Image from "components/Image/Image";
 
 type EventCardProps = {
   className?: string;
@@ -30,7 +31,8 @@ const EventCard: React.FC<EventCardProps> = ({ className, event }) => {
             <span className="hover">En savoir plus</span>
           </div>
         </TextContainer>
-        <img src={event.img} alt={event.title} />
+        <Image src={event.img} />
+        {/* <img src={event.img} alt={event.title} /> */}
       </Container>
     </UnStyledLink>
   );

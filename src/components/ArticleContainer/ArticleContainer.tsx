@@ -35,8 +35,6 @@ const ArticleContainer: React.FC<ArticleContainerProps> = ({ event, id }) => {
     detail: event.price_detail,
   };
 
-  console.log(event);
-
   return (
     <Container>
       <HandleFavorite id={id} defaultBackgroundColor="lightgrey" />

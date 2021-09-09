@@ -4,16 +4,18 @@ export const retreiveRandomElementFromArray = <T>(arr: T[]): T =>
 export const capitalizeFirstLetter = (string: string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
-export const handlePagination = (page: number, EVENTS_PER_PAGE: number) => {
+export const getPaginationOffset = (
+  page: number,
+  EVENTS_PER_PAGE: number
+): number => {
   const pageIndex = page - 1;
 
-  if (pageIndex === 0) {
-    return { offset: 0 };
-  }
-  return { offset: EVENTS_PER_PAGE * pageIndex + 1 };
+  if (pageIndex === 0) return 0;
+
+  return EVENTS_PER_PAGE * pageIndex + 1;
 };
 
-const getRange = (start: number, stop: number, step: number = 1) => {
+const getRange = (start: number, stop: number, step: number = 1): number[] => {
   return Array.from(
     { length: (stop - start) / step + 1 },
     (_, i) => start + i * step
@@ -24,7 +26,7 @@ export const getPageChoices = (
   currentPage: number,
   maxPages: number,
   pageRange: number
-) => {
+): number[] => {
   let rangeStart = currentPage - pageRange;
   let rangeStop = currentPage + pageRange;
 

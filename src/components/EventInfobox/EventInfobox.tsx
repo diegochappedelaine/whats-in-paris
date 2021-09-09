@@ -53,8 +53,12 @@ const EventInfobox: React.FC<EventInfoboxProps> = ({
         </p>
         <h3>S'y rendre</h3>
         <p>
-          {event.address_name}
-          <br />
+          {event.address_name && (
+            <>
+              {event.address_name}
+              <br />
+            </>
+          )}
           {event.address_street}
           <br />
           {event.address_zipcode}

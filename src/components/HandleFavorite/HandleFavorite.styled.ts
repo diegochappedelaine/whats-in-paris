@@ -23,8 +23,12 @@ export const Button = styled.button<{
   transition: background-color 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55),
     transform 100ms cubic-bezier(0.64, 0.04, 0.35, 1);
 
-  background-color: ${({ $isFavorite, defaultBackgroundColor }) =>
-    $isFavorite ? "lightpink" : defaultBackgroundColor};
+  ${({ theme: { breakpoints }, $isFavorite, defaultBackgroundColor }) => `
+    background-color: ${$isFavorite ? "lightpink" : "lightgrey"};
+    @media (min-width: ${breakpoints.mobile}px) {
+      background-color: ${$isFavorite ? "lightpink" : defaultBackgroundColor};
+    }
+  `}
 
   &:active {
     transform: scale(0.98);
