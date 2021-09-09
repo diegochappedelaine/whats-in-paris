@@ -12,6 +12,8 @@ import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import Error from "./Error";
 import FavoriteEmptyState from "./FavoriteEmptyState";
 import ScrollToTop from "./ScrollToTop";
+import Button from "./Button";
+import Pagination from "./Pagination/Pagination";
 
 export {
   Header,
@@ -28,4 +30,6 @@ export {
   Error,
   FavoriteEmptyState,
   ScrollToTop,
+  Button,
+  Pagination,
 };

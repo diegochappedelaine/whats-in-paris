@@ -15,7 +15,6 @@ const InputText = styled.input`
   border-style: solid;
   border: 1px solid #e2e2e2;
   box-sizing: border-box;
-  margin-top: 32px;
 `;
 
 type InputProps = {

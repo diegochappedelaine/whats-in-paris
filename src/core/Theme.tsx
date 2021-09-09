@@ -11,6 +11,7 @@ const grey700 = "#4A5568";
 const grey800 = "#2D3748";
 
 const primary = "#6B46C1";
+const primaryLight = "#a076bf";
 
 export const theme = {
   fontSize: {
@@ -24,7 +25,16 @@ export const theme = {
     textBig: "18px",
   },
   breakpoints: { mobile: 800 },
-  colors: { black100, grey100, grey200, grey600, grey700, grey800, primary },
+  colors: {
+    black100,
+    grey100,
+    grey200,
+    grey600,
+    grey700,
+    grey800,
+    primary,
+    primaryLight,
+  },
   boxShadow: { regular: "0px 5px 4px rgba(221, 221, 221, 0.25)" },
 };
 

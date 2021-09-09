@@ -35,12 +35,15 @@ const ArticleContainer: React.FC<ArticleContainerProps> = ({ event, id }) => {
     detail: event.price_detail,
   };
 
+  console.log(event);
+
   return (
     <Container>
       <HandleFavorite id={id} defaultBackgroundColor="lightgrey" />
       <h1>{event.title}</h1>
       <h2>
-        {event.category} <span>@{event.address_name}</span>
+        {event.category}{" "}
+        <span>@{event.address_name || event.address_city}</span>
       </h2>
       <Separator />
       <ParsedContent>{parse(event.description)}</ParsedContent>

@@ -1,8 +1,11 @@
-import styled from "styled-components";
 import { getPageChoices, queryToString } from "utils";
 import { useQuery } from "hooks";
-import { Link, useHistory } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
+import {
+  PaginationWrapper,
+  PaginationButton,
+  PageChoiceButton,
+} from "./Pagination.styled";
 import {
   FaAngleLeft,
   FaAngleRight,
@@ -15,38 +18,6 @@ type PaginationProps = {
   lastPage: number;
 };
 
-const PaginationWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0 auto 64px;
-`;
-
-const PaginationButton = styled(Link)<{ $isDisabled: boolean }>`
-  margin: 0 8px;
-  transition: color 0.1s ease-out;
-  ${({ $isDisabled, theme: { colors } }) => `
-    pointer-events: ${$isDisabled ? "none" : "auto"}; 
-    cursor: ${$isDisabled ? "not-allowed" : "pointer"};
-    color: ${$isDisabled ? "lightgrey" : "black"};
-
-    &:hover {
-     color: ${$isDisabled ? "inherit" : colors.primary};
-    }
-  `}
-`;
-
-const PageChoiceButton = styled(Link)<{ $isCurrentPage: boolean }>`
-  padding: 10px 16px;
-  text-decoration: none;
-  border: 1px solid lightgrey;
-  transition: color 0.1s ease-out;
-
-  ${({ $isCurrentPage, theme: { colors } }) => `
-    background-color: ${$isCurrentPage ? colors.primary : "white"};
-    color: ${$isCurrentPage ? "white" : "black"};
-  `};
-`;
-
 const Pagination: React.FC<PaginationProps> = ({ currentPage, lastPage }) => {
   const history = useHistory();
   const queries = useQuery();
@@ -54,7 +25,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, lastPage }) => {
 
   const generateNewPageUrl = (page: number): string => {
     const newQueries = queryToString({ ...queries, page: page.toString() });
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0, behavior: "smooth" });
     return history.createHref({
       pathname: history.location.pathname,
       search: newQueries,

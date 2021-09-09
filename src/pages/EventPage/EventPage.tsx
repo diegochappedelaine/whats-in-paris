@@ -1,32 +1,24 @@
 import { useState } from "react";
-import styled from "styled-components";
-import { useFetch } from "hooks";
+import { useFetch, useTitle } from "hooks";
 import { useParams } from "react-router-dom";
 
 import { GET_EVENT_BY_ID } from "api/end-points";
 import { GetEventByIdQuery } from "types";
 import { Container } from "components/layouts";
 import { ImageModal, Loading, ArticleContainer, Error } from "components";
-
-const BannerImage = styled.img`
-  height: 380px;
-  object-fit: cover;
-  object-position: 50% top;
-  filter: brightness(80%);
-  margin-bottom: 40px;
-  transition: filter 0.2s ease-out;
-
-  &:hover {
-    cursor: pointer;
-    filter: brightness(70%);
-  }
-`;
+import { BannerImage } from "./EventPage.styled";
 
 const EventPage = () => {
   const { id } = useParams<{ id: string }>();
   const [isModalDisplayed, setIsModalDisplayed] = useState<boolean>(false);
   const { data, loading } = useFetch<GetEventByIdQuery>(
     `${GET_EVENT_BY_ID}/${id}`
+  );
+
+  useTitle(
+    data?.record.fields.title
+      ? `quoiDeNeuf: ${data?.record.fields.title}`
+      : `quoiDeNeuf`
   );
 
   if (loading) return <Loading />;

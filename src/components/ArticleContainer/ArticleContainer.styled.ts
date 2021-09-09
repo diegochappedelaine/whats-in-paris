@@ -46,7 +46,11 @@ export const Container = styled.article`
       font-size: ${fontSize.textMedium};
       font-weight: 300;
       line-height: 24px;
-    } 
+    }
+    
+    a {
+      color: black;
+    }
     `}
 `;
 

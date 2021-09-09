@@ -1,25 +1,12 @@
-import { useFetchFavoritesEvents } from "hooks";
-import styled from "styled-components";
+import { useFetchFavoritesEvents, useTitle } from "hooks";
 import { Error, EventCard, Loading, FavoriteEmptyState } from "components";
-import { Container as _Container } from "components/layouts";
 import { useAppContext } from "provider/AppProvider";
-
-const Container = styled(_Container)`
-  padding: 0 8px;
-  @media (min-width: ${({ theme: { breakpoints } }) =>
-      `${breakpoints.mobile}px`}) {
-    padding: 0;
-  }
-`;
-
-const UnorderedList = styled.ul`
-  margin-top: 60px;
-  list-style-type: none;
-`;
+import { Container, UnorderedList } from "./FavoritesPage.styled";
 
 const FavoritesPage = () => {
   const { data, loading, error } = useFetchFavoritesEvents();
   const { favoritesEvents } = useAppContext();
+  useTitle("quoiDeNeuf? Vos favoris");
 
   const favorites = data?.filter(({ record: event }) =>
     favoritesEvents.includes(event.id)

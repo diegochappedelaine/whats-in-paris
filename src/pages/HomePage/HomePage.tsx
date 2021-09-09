@@ -1,37 +1,13 @@
-import styled from "styled-components";
-import { useFetch } from "hooks";
+import { useFetch, useTitle } from "hooks";
 import { GetEventsWithSearchQuery } from "types";
 import { RETREIVE_LAST_EVENT } from "api/end-points";
-import {
-  EventCard as _EventCard,
-  Loading,
-  HeroBanner,
-  Error,
-} from "components";
-import { Container as _Container } from "components/layouts";
-import { Link } from "react-router-dom";
-
-const Container = styled(_Container)`
-  margin-top: 60px;
-`;
-
-const EventCard = styled(_EventCard)`
-  margin-top: 40px;
-`;
-
-const Redirect = styled(Link)`
-  ${({ theme: { colors, fontSize } }) => `
-    font-size: ${fontSize.heading3};
-    font-weight: 700;
-    color: ${colors.grey800};
-    margin: 60px auto 140px;
-  `}
-`;
+import { Loading, HeroBanner, Error } from "components";
+import { Container, EventCard, Redirect } from "./HomePage.styled";
 
 const HomePage = () => {
   const { data, loading, error } =
     useFetch<GetEventsWithSearchQuery>(RETREIVE_LAST_EVENT);
-
+  useTitle("quoiDeNeuf à Paris ?");
   const event = data?.records?.[0].record;
 
   return (
