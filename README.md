@@ -15,7 +15,3 @@ $> yarn start
 - React
 - TypeScript
 - styled-components
-
-## Deployment
-
-https://quoideneuf.netlify.app/
